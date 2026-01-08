@@ -19,11 +19,14 @@ import { Icon } from "@iconify/react";
 import EngineSettingsButton from "@/sections/engineSettings/engineSettingsButton";
 import GraphTab from "@/sections/analysis/panelBody/graphTab";
 import { PageTitle } from "@/components/pageTitle";
+import { useAnalysisSync } from "@/sections/analysis/hooks/useAnalysisSync";
 
 export default function GameAnalysis() {
   const theme = useTheme();
   const [tab, setTab] = useState(0);
   const isLgOrGreater = useMediaQuery(theme.breakpoints.up("lg"));
+
+  useAnalysisSync();
 
   const gameEval = useAtomValue(gameEvalAtom);
   const game = useAtomValue(gameAtom);
